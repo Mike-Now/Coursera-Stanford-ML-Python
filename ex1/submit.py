@@ -1,7 +1,13 @@
 import numpy as np
 
+import os
+import sys
+import importlib
+sys.path.insert(1, os.path.join(sys.path[0], '..'))
+
 from Submission import Submission
 from Submission import sprintf
+from Submission import get_parent_dirname
 
 __all__ = ['submit']
 
@@ -34,8 +40,10 @@ def output(part_id):
     X2 = np.column_stack((X1, X1[:,1]**0.5, X1[:,1]**0.25))
     Y2 = np.power(Y1, 0.5) + Y1
 
+    parent_module_name = get_parent_dirname(__file__)
     fname = srcs[part_id-1].rsplit('.',1)[0]
-    mod = __import__(fname, fromlist=[fname], level=1)
+    abs_mod_path = '{}.{}'.format(parent_module_name, fname)
+    mod = importlib.import_module(fname)
     func = getattr(mod, fname)
 
     if part_id == 1:
@@ -54,9 +62,4 @@ def output(part_id):
         return sprintf('%0.5f ', func(X2, Y2))
 
 s = Submission(homework, part_names, srcs, output)
-try:
-    s.submit()
-except Exception as ex:
-    template = "An exception of type {0} occured. Messsage:\n{1!r}"
-    message = template.format(type(ex).__name__, ex.args)
-    print message
+s.submit()

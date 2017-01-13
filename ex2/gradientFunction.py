@@ -1,4 +1,4 @@
-from sigmoid import sigmoid
+from .sigmoid import sigmoid
 from numpy import squeeze, asarray
 
 

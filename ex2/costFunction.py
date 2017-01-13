@@ -1,5 +1,5 @@
 from numpy import log
-from sigmoid import sigmoid
+from .sigmoid import sigmoid
 
 def costFunction(theta, X,y):
     """ computes the cost of using theta as the

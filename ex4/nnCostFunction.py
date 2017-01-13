@@ -1,7 +1,7 @@
 import numpy as np
 
 from ex2.sigmoid import sigmoid
-from sigmoidGradient import sigmoidGradient
+from .sigmoidGradient import sigmoidGradient
 
 
 def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, Lambda):

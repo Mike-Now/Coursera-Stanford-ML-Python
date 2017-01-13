@@ -1,6 +1,6 @@
 from numpy import round
 
-from sigmoid import sigmoid
+from .sigmoid import sigmoid
 
 
 def predict(theta, X):

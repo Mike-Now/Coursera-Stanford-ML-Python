@@ -1,6 +1,6 @@
 from numpy import asfortranarray, squeeze, asarray
 
-from gradientFunction import gradientFunction
+from .gradientFunction import gradientFunction
 
 
 def gradientFunctionReg(theta, X, y, Lambda):
